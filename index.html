@@ -3,11 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Website</title>
+    <title>Market Place</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .gadget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gadget-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .gadget-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .gadget-card h3 {
+            margin: 10px 0;
+        }
+        .gadget-card p {
+            margin: 5px 0;
+            color: #777;
+        }
+        .gadget-card button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .gadget-card button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This is a sample website hosted on GitHub Pages.</p>
-    <script src="main.js"></script>
+    <div class="container">
+        <div class="header">
+            <h1>Market Place</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Qidiruv...">
+            </div>
+        </div>
+        <div class="gadget-grid" id="gadgetGrid">
+            <!-- Gadgets will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const gadgetsList = [
+            {
+                title: "iPhone 13 Pro Max",
+                category: "Telefon",
+                image: "https://i5.walmartimages.com/seo/Like-New-Apple-iPhone-13-Pro-Max-A2484-1024GB-Graphite-US-Model-Factory-Unlocked-Cell-Phone_3799fa6d-69b3-4396-85ea-dcf72b7cf82c.2dd229ac08aa206ccdb79e98909c8591.jpeg",
+                price: "699 USD",
+                specs: "128GB, 12MP kamera, 4352 mAh batareya"
+            },
+            {
+                title: "iPad Pro",
+                category: "Planshet",
+                image: "https://brostore.uz/cdn/shop/files/u2.png?v=1700307807",
+                price: "1199 USD",
+                specs: "256GB, 12.9 dyuym ekran, 9720 mAh batareya"
+            },
+            {
+                title: "Nintendo Switch",
+                category: "Nintendo",
+                image: "https://m.media-amazon.com/images/I/51Gz7IimgoL._SL1024_.jpg",
+                price: "299 USD",
+                specs: "32GB, 6.2 dyuym ekran, 4310 mAh batareya"
+            },
+            {
+                title: "PlayStation 5",
+                category: "PlayStation",
+                image: "https://frankfurt.apollo.olxcdn.com/v1/files/53m0m8q4v1lf3-UZ/image",
+                price: "499 USD",
+                specs: "825GB SSD, DualSense kontrol"
+            },
+            {
+                title: "TUF Gaming Laptop",
+                category: "Noutbuk",
+                image: "https://images.uzum.uz/cr6ohmfiraat934r7j10/original.jpg",
+                price: "1499 USD",
+                specs: "Intel i7, 16GB RAM, NVIDIA RTX 3060 grafik"
+            },
+            {
+                title: "PlayStation Steering Wheel",
+                category: "PlayStation",
+                image: "https://i5.walmartimages.com/seo/Logitech-G29-Driving-Force-Racing-Wheel-for-Playstation-3-and-Playstation-4_985fd5c1-15aa-4d9d-93aa-f650478a43f2.af6aae4dd0889df27abdf9b810615bc4.jpeg",
+                price: "199 USD",
+                specs: "PS5, PS4, PC, Force Feedback"
+            },
+            {
+                title: "Samsung Galaxy S21",
+                category: "Telefon",
+                image: "https://wefix.co.za/cdn/shop/products/Galaxy-S21-Ultra-Black.png?v=1700426091",
+                price: "799 USD",
+                specs: "256GB, 108MP kamera, 5000 mAh batareya"
+            },
+            {
+                title: "MacBook Pro 16",
+                category: "Noutbuk",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQgI56vekxYPUPS1O-6RNMejL4q9A9iCY7mA&s",
+                price: "2399 USD",
+                specs: "Apple M1 Pro, 16GB RAM, 1TB SSD"
+            },
+            {
+                title: "Google Pixel 6",
+                category: "Telefon",
+                image: "https://m.media-amazon.com/images/I/71adnun6E8L.jpg",
+                price: "599 USD",
+                specs: "128GB, 50MP kamera, 4614 mAh batareya"
+            },
+            {
+                title: "Dell XPS 13",
+                category: "Noutbuk",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9CKaYfFMVx7qgcZbwcmDcutfaHtDOZS8XQ&s",
+                price: "999 USD",
+                specs: "Intel i7, 16GB RAM, 512GB SSD"
+            },
+            {
+                title: "MSI Modern 14",
+                category: "Noutbuk",
+                image: "https://cdn.asaxiy.uz/asaxiy-content/product/items/desktop/021bbc7ee20b71134d53e20206bd6feb2024022716260335729a54dwqmfwK.png.webp",
+                price: "349 USD",
+                specs: "NVIDIA GeForce RTX 2050, Intel Core i5"
+            },
+            {
+                title: "GoPro HERO10",
+                category: "Kamera",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYWGmpRRn5xR4Yf3hiOZ3aCk-r0cstiGZ6kA&s",
+                price: "499 USD",
+                specs: "5.3K video, 23MP fotosuratlar, HyperSmooth 4.0"
+            }
+        ];
+
+        const gadgetGrid = document.getElementById('gadgetGrid');
+        const searchInput = document.getElementById('searchInput');
+
+        function displayGadgets(gadgets) {
+            gadgetGrid.innerHTML = '';
+            gadgets.forEach(gadget => {
+                const gadgetCard = document.createElement('div');
+                gadgetCard.className = 'gadget-card';
+                gadgetCard.innerHTML = `
+                    <img src="${gadget.image}" alt="${gadget.title}">
+                    <h3>${gadget.title}</h3>
+                    <p>${gadget.price}</p>
+                    <p>${gadget.specs}</p>
+                    <button onclick="window.open('${gadget.url}', '_blank')">Batafsil</button>
+                `;
+                gadgetGrid.appendChild(gadgetCard);
+            });
+        }
+
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            const filteredGadgets = gadgetsList.filter(gadget =>
+                gadget.title.toLowerCase().includes(query) ||
+                gadget.category.toLowerCase().includes(query)
+            );
+            displayGadgets(filteredGadgets);
+        });
+
+        // Display all gadgets initially
+        displayGadgets(gadgetsList);
+    </script>
 </body>
 </html>
