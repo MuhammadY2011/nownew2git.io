@@ -70,10 +70,61 @@
         .gadget-card button:hover {
             background-color: #0056b3;
         }
+        .drawer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            width: 250px;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+        .drawer img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .drawer h2 {
+            text-align: center;
+        }
+        .drawer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .drawer ul li {
+            padding: 10px;
+            text-align: center;
+        }
+        .drawer ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+        .drawer ul li a:hover {
+            background-color: #575757;
+        }
+        @media (max-width: 600px) {
+            .gadget-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="drawer" id="drawer">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZUq_im5xfAwetyOB8xgrYrDcN4yi4-naug4CwlwFY4o4MD27XX5mdA2rVRgIuml_SHs&usqp=CAU" alt="Profile Image" id="profileImage">
+        <h2 id="userName">User Name</h2>
+        <ul>
+            <li><a href="#" onclick="showUnderConstructionMessage()">Home</a></li>
+            <li><a href="#" onclick="showUnderConstructionMessage()">Settings</a></li>
+            <li><a href="#" onclick="showUnderConstructionMessage()">Logout</a></li>
+            <li><a href="https://t.me/nownewsuz" target="_blank">Telegram Channel</a></li>
+            <li><a href="#" onclick="showHelper()">Helper</a></li>
+            <li><a href="#" onclick="showQuizResponses()">Viktorina javoblari</a></li>
+            <li><a href="#" onclick="showMessages()">Messages</a></li>
+        </ul>
+    </div>
+    <div class="container" style="margin-left: 270px;">
         <div class="header">
             <h1>Market Place</h1>
             <div class="search-bar">
@@ -86,6 +137,11 @@
     </div>
 
     <script>
+        const profileImage = document.getElementById('profileImage');
+        const userName = document.getElementById('userName');
+        profileImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZUq_im5xfAwetyOB8xgrYrDcN4yi4-naug4CwlwFY4o4MD27XX5mdA2rVRgIuml_SHs&usqp=CAU';
+        userName.innerText = 'MuhammadY2011';
+
         const gadgetsList = [
             {
                 title: "iPhone 13 Pro Max",
@@ -186,7 +242,7 @@
                     <h3>${gadget.title}</h3>
                     <p>${gadget.price}</p>
                     <p>${gadget.specs}</p>
-                    <button onclick="window.open('${gadget.url}', '_blank')">Batafsil</button>
+                    <button onclick="window.open('${gadget.url || '#'}', '_blank')">Batafsil</button>
                 `;
                 gadgetGrid.appendChild(gadgetCard);
             });
@@ -200,6 +256,31 @@
             );
             displayGadgets(filteredGadgets);
         });
+
+        function showUnderConstructionMessage() {
+            alert('Bu funksiya hozirda mavjud emas.');
+        }
+
+        function showHelper() {
+            const helpQuery = prompt('Savolingizni yozing...');
+            if (helpQuery) {
+                saveQuestion(helpQuery);
+            }
+        }
+
+        function showQuizResponses() {
+            alert('Viktorina javoblari hozirda mavjud emas.');
+        }
+
+        function showMessages() {
+            alert('Savollar hozirda mavjud emas.');
+        }
+
+        function saveQuestion(question) {
+            const questions = JSON.parse(localStorage.getItem('questions')) || [];
+            questions.push(question);
+            localStorage.setItem('questions', JSON.stringify(questions));
+        }
 
         // Display all gadgets initially
         displayGadgets(gadgetsList);
