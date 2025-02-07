@@ -4,154 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Market Place</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: auto;
             padding: 20px;
         }
-        .header {
-            background-color: white;
-            padding: 10px; /* Kichiklashtirilgan AppBar */
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
         }
-        .header h1 {
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-content h3 {
             margin: 0;
-            flex-grow: 1;
+            font-size: 18px;
         }
-        .header .quiz-icon {
-            font-size: 24px;
-            color: black;
-            cursor: pointer;
+        .card-content p {
+            color: #666;
+            font-size: 14px;
+        }
+        .card-content .price {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
         }
         .search-bar {
-            margin: 20px 0;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
         .search-bar input {
-            padding: 10px;
             width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
         }
-        .gadget-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .gadget-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .gadget-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .gadget-card h3 {
-            margin: 10px 0;
-        }
-        .gadget-card p {
-            margin: 5px 0;
-            color: #777;
-        }
-        .gadget-card button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
+        .search-bar button {
+            padding: 10px;
             border: none;
-            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
         }
-        .gadget-card button:hover {
-            background-color: #0056b3;
+        .profile-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
         }
         .drawer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
             width: 250px;
+            background-color: #333;
+            color: #fff;
             position: fixed;
+            top: 0;
+            left: 0;
             height: 100%;
-            overflow: auto;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
-        .drawer img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-        }
-        .drawer h2 {
-            text-align: center;
-        }
-        .drawer ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .drawer ul li {
-            padding: 10px;
-            text-align: center;
-        }
-        .drawer ul li a {
+        .drawer a {
             color: #fff;
             text-decoration: none;
             display: block;
+            margin: 10px 0;
+            font-size: 18px;
         }
-        .drawer ul li a:hover {
-            background-color: #575757;
+        .drawer .profile-info {
+            text-align: center;
         }
-        @media (max-width: 600px) {
-            .gadget-grid {
-                grid-template-columns: 1fr;
-            }
+        .drawer .profile-info h2 {
+            margin: 10px 0 0;
+        }
+        .drawer .profile-info p {
+            margin: 5px 0;
+            color: #ff0;
+            font-weight: bold;
+        }
+        .logout {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .logout:hover {
+            color: #ff0;
         }
     </style>
 </head>
 <body>
-    <div class="drawer" id="drawer">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZUq_im5xfAwetyOB8xgrYrDcN4yi4-naug4CwlwFY4o4MD27XX5mdA2rVRgIuml_SHs&usqp=CAU" alt="Profile Image" id="profileImage">
-        <h2 id="userName">MuhammadY2011</h2>
-        <ul>
-            <li><a href="#" onclick="showUnderConstructionMessage()">Home</a></li>
-            <li><a href="#" onclick="showUnderConstructionMessage()">Settings</a></li>
-            <li><a href="#" onclick="showUnderConstructionMessage()">Logout</a></li>
-            <li><a href="https://t.me/nownewsuz" target="_blank">Telegram Channel</a></li>
-            <li><a href="#" onclick="showHelper()">Helper</a></li>
-            <li><a href="#" onclick="showQuizResponses()">Viktorina javoblari</a></li>
-            <li><a href="#" onclick="showMessages()">Messages</a></li>
-        </ul>
+    <div class="drawer">
+        <div class="profile-info">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZUq_im5xfAwetyOB8xgrYrDcN4yi4-naug4CwlwFY4o4MD27XX5mdA2rVRgIuml_SHs&usqp=CAU" class="profile-image" alt="Profile Image">
+            <h2>MuhammadY2011</h2>
+            <p>Prezident</p>
+        </div>
+        <a href="#">Home</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+        <hr>
+        <a href="https://t.me/nownewsuz">Telegram Channel</a>
+        <hr>
+        <a href="#">Give your idea!</a>
+        <hr>
+        <a href="#">Viktorina javoblari</a>
+        <a href="#">Messages</a>
     </div>
-    <div class="container" style="margin-left: 270px;">
-        <div class="header">
-            <h1>Market Place</h1>
-            <i class="quiz-icon" onclick="showQuiz()">🧩</i>
-        </div>
+    <div class="container">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Qidiruv...">
+            <input type="text" id="search" placeholder="Search...">
+            <button onclick="filterGadgets()">Search</button>
         </div>
-        <div class="gadget-grid" id="gadgetGrid">
-            <!-- Gadgets will be inserted here -->
+        <div id="gadgets-container">
+            <div class="card">
+                <img src="https://i5.walmartimages.com/seo/Like-New-Apple-iPhone-13-Pro-Max-A2484-1024GB-Graphite-US-Model-Factory-Unlocked-Cell-Phone_3799fa6d-69b3-4396-85ea-dcf72b7cf82c.2dd229ac08aa206ccdb79e98909c8591.jpeg" alt="iPhone 13 Pro Max">
+                <div class="card-content">
+                    <h3>iPhone 13 Pro Max</h3>
+                    <p>128GB, 12MP kamera, 4352 mAh batareya</p>
+                    <p class="price">699 USD</p>
+                    <button onclick="launchURL('https://example.com')">Batafsil</button>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
         </div>
     </div>
 
     <script>
-        const profileImage = document.getElementById('profileImage');
-        const userName = document.getElementById('userName');
-        profileImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZUq_im5xfAwetyOB8xgrYrDcN4yi4-naug4CwlwFY4o4MD27XX5mdA2rVRgIuml_SHs&usqp=CAU';
-        userName.innerText = 'MuhammadY2011';
-
         const gadgetsList = [
             {
                 title: "iPhone 13 Pro Max",
@@ -167,136 +164,42 @@
                 price: "1199 USD",
                 specs: "256GB, 12.9 dyuym ekran, 9720 mAh batareya"
             },
-            {
-                title: "Nintendo Switch",
-                category: "Nintendo",
-                image: "https://m.media-amazon.com/images/I/51Gz7IimgoL._SL1024_.jpg",
-                price: "299 USD",
-                specs: "32GB, 6.2 dyuym ekran, 4310 mAh batareya"
-            },
-            {
-                title: "PlayStation 5",
-                category: "PlayStation",
-                image: "https://frankfurt.apollo.olxcdn.com/v1/files/53m0m8q4v1lf3-UZ/image",
-                price: "499 USD",
-                specs: "825GB SSD, DualSense kontrol"
-            },
-            {
-                title: "TUF Gaming Laptop",
-                category: "Noutbuk",
-                image: "https://images.uzum.uz/cr6ohmfiraat934r7j10/original.jpg",
-                price: "1499 USD",
-                specs: "Intel i7, 16GB RAM, NVIDIA RTX 3060 grafik"
-            },
-            {
-                title: "PlayStation Steering Wheel",
-                category: "PlayStation",
-                image: "https://i5.walmartimages.com/seo/Logitech-G29-Driving-Force-Racing-Wheel-for-Playstation-3-and-Playstation-4_985fd5c1-15aa-4d9d-93aa-f650478a43f2.af6aae4dd0889df27abdf9b810615bc4.jpeg",
-                price: "199 USD",
-                specs: "PS5, PS4, PC, Force Feedback"
-            },
-            {
-                title: "Samsung Galaxy S21",
-                category: "Telefon",
-                image: "https://wefix.co.za/cdn/shop/products/Galaxy-S21-Ultra-Black.png?v=1700426091",
-                price: "799 USD",
-                specs: "256GB, 108MP kamera, 5000 mAh batareya"
-            },
-            {
-                title: "MacBook Pro 16",
-                category: "Noutbuk",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQgI56vekxYPUPS1O-6RNMejL4q9A9iCY7mA&s",
-                price: "2399 USD",
-                specs: "Apple M1 Pro, 16GB RAM, 1TB SSD"
-            },
-            {
-                title: "Google Pixel 6",
-                category: "Telefon",
-                image: "https://m.media-amazon.com/images/I/71adnun6E8L.jpg",
-                price: "599 USD",
-                specs: "128GB, 50MP kamera, 4614 mAh batareya"
-            },
-            {
-                title: "Dell XPS 13",
-                category: "Noutbuk",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9CKaYfFMVx7qgcZbwcmDcutfaHtDOZS8XQ&s",
-                price: "999 USD",
-                specs: "Intel i7, 16GB RAM, 512GB SSD"
-            },
-            {
-                title: "MSI Modern 14",
-                category: "Noutbuk",
-                image: "https://cdn.asaxiy.uz/asaxiy-content/product/items/desktop/021bbc7ee20b71134d53e20206bd6feb2024022716260335729a54dwqmfwK.png.webp",
-                price: "349 USD",
-                specs: "NVIDIA GeForce RTX 2050, Intel Core i5"
-            },
-            {
-                title: "GoPro HERO10",
-                category: "Kamera",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYWGmpRRn5xR4Yf3hiOZ3aCk-r0cstiGZ6kA&s",
-                price: "499 USD",
-                specs: "5.3K video, 23MP fotosuratlar, HyperSmooth 4.0"
-            }
+            // Add more gadgets as needed
         ];
 
-        const gadgetGrid = document.getElementById('gadgetGrid');
-        const searchInput = document.getElementById('searchInput');
-
-        function displayGadgets(gadgets) {
-            gadgetGrid.innerHTML = '';
-            gadgets.forEach(gadget => {
-                const gadgetCard = document.createElement('div');
-                gadgetCard.className = 'gadget-card';
-                gadgetCard.innerHTML = `
-                    <img src="${gadget.image}" alt="${gadget.title}">
-                    <h3>${gadget.title}</h3>
-                    <p>${gadget.price}</p>
-                    <p>${gadget.specs}</p>
-                    <button onclick="window.open('${gadget.url || '#'}', '_blank')">Batafsil</button>
-                `;
-                gadgetGrid.appendChild(gadgetCard);
-            });
-        }
-
-        searchInput.addEventListener('input', function() {
-            const query = searchInput.value.toLowerCase();
-            const filteredGadgets = gadgetsList.filter(gadget =>
-                gadget.title.toLowerCase().includes(query) ||
+        function filterGadgets() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const filteredGadgets = gadgetsList.filter(gadget => 
+                gadget.title.toLowerCase().includes(query) || 
                 gadget.category.toLowerCase().includes(query)
             );
             displayGadgets(filteredGadgets);
-        });
-
-        function showUnderConstructionMessage() {
-            alert('Bu funksiya hozirda mavjud emas.');
         }
 
-        function showHelper() {
-            const helpQuery = prompt('Savolingizni yozing...');
-            if (helpQuery) {
-                saveQuestion(helpQuery);
-            }
+        function displayGadgets(gadgets) {
+            const gadgetsContainer = document.getElementById('gadgets-container');
+            gadgetsContainer.innerHTML = '';
+            gadgets.forEach(gadget => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${gadget.image}" alt="${gadget.title}">
+                    <div class="card-content">
+                        <h3>${gadget.title}</h3>
+                        <p>${gadget.specs}</p>
+                        <p class="price">${gadget.price}</p>
+                        <button onclick="launchURL('https://example.com')">Batafsil</button>
+                    </div>
+                `;
+                gadgetsContainer.appendChild(card);
+            });
         }
 
-        function showQuizResponses() {
-            alert('Viktorina javoblari hozirda mavjud emas.');
+        function launchURL(url) {
+            window.open(url, '_blank');
         }
 
-        function showMessages() {
-            alert('Savollar hozirda mavjud emas.');
-        }
-
-        function showQuiz() {
-            alert('Viktorina hozirda mavjud emas.');
-        }
-
-        function saveQuestion(question) {
-            const questions = JSON.parse(localStorage.getItem('questions')) || [];
-            questions.push(question);
-            localStorage.setItem('questions', JSON.stringify(questions));
-        }
-
-        // Display all gadgets initially
+        // Initial display of gadgets
         displayGadgets(gadgetsList);
     </script>
 </body>
